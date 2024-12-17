@@ -10,7 +10,6 @@ ds_transform = transforms.Compose([
     transforms. ToImage(),
     transforms. ToDtype(torch. float32, scale=True)
 ])
-
 ds_train = datasets. FashionMNIST(
     root='data',
     train=True,
@@ -24,7 +23,6 @@ ds_test = datasets.FashionMNIST(
     download=True,
     transform=ds_transform
 )
-
 batch_size = 64
 dataloader_train = torch.utils.data.DataLoader(
     ds_train,
@@ -80,7 +78,7 @@ for k in range(n_epochs):
         acc_train = models.test_accuracy(model, dataloader_train)
         time_end = time.time
         acc_train_history.append(acc_train)
-        print(f'    train accuracy: {acc_train*100:.3f}%({time_end-time_start:.1f}s)')
+        print(f'train accuracy: {acc_train*100:.3f}%')
         
         time_start = time.time()
         acc_test = models.test_accuracy(model, dataloader_test)
